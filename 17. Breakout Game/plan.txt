@@ -1,0 +1,11 @@
+1. Create canvas context
+2. Create and draw a ball - going to use paths 
+3. Create and draw the paddle 
+4. Create bricks (many bricks [rows and cols] therefore will be an array of arrays containing the info that creates the individual bricks)
+5. Draw score 
+6. Animations. Add update function to Animate. When the canvas is updated, we will be essentially re-drawing the canvas to reflect changes in the game state like restarting or breaking blocks. Done w/ function called requestAnimationFrame(updateFunction)
+7. Move the paddle w/ keyboard events
+8. Move the ball 
+9. Adding wall boundaries 
+10. Increase the score when the bricks break
+11. Create the loose functionality - redraw the bricks and reset the score 

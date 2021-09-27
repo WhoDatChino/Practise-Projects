@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Georama&display=swap");
+
+:root {
+  --border-colour: #e3e5e4;
+  --background-colour: #c3c7ca;
+  --text-colour: #34444f;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Georama", sans-serif;
+}
+
+body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  margin: 0;
+}
+
+.draggable-list {
+  border: 1px solid var(--border-colour);
+  color: var(--text-colour);
+  padding: 0;
+  list-style-type: none;
+}
+.draggable-list li {
+  background-color: white;
+  display: flex;
+  flex: 1;
+}
+.draggable-list li:not(:last-of-type) {
+  border-bottom: 1px solid var(--border-colour);
+}
+/* Darken an element when another one is being dragged over it */
+.draggable-list li.over .draggable {
+  background-color: #eaeaea;
+}
+.draggable-list li.right .person-name {
+  color: #3ae374;
+}
+.draggable-list li.wrong .person-name {
+  color: #ff3838;
+}
+
+.draggable-list .number {
+  background-color: var(--background-colour);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  height: 80px;
+  width: 80px;
+}
+.draggable-list .person-name {
+  margin: 0 20px;
+}
+
+.draggable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  height: 80px;
+  font-size: 20px;
+  text-align: center;
+}
+.draggable i {
+  margin: 0 15px;
+}
+
+.check-btn {
+  background-color: var(--background-colour);
+  border: none;
+  color: var(--text-colour);
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.check-btn:active {
+  transform: scale(0.98);
+}

@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  background-image: linear-gradient(
+    to top right,
+    rgb(190, 189, 189),
+    rgb(255, 255, 255)
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  position: relative;
+}
+
+h1 button {
+  position: absolute;
+  right: 0;
+  transform: translate(120%, -50%);
+  z-index: 2;
+}
+
+.btn {
+  background-color: rgb(29, 149, 197);
+  border: solid 1px #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 10px 15px;
+  color: white;
+}
+
+.btn-small {
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.btn-ghost {
+  border: 0;
+  background-color: transparent;
+}
+
+.clear {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.cards {
+  perspective: 1000px;
+  position: relative;
+  height: 300px;
+  width: 500px;
+  max-width: 100%;
+}
+
+.card {
+  position: absolute;
+  opacity: 0;
+  font-size: 1.5rem;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: translateX(50%) rotateY(-10deg);
+  transition: transform 400ms ease, opacity 400ms ease;
+}
+
+.card.active {
+  opacity: 1;
+  cursor: pointer;
+  z-index: 10;
+  transform: translateX(0%) rotateY(-0);
+}
+
+.card.left {
+  transform: translateX(-50%) rotateY(10deg);
+}
+
+.inner-card {
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  /* Question and answer (inner-card-front & inner-card-back) will be positioned absolutely w/in this*/
+
+  /* Sets where the children of an element are positioned in the 3d space or are flattened in the plane of the element */
+  transform-style: preserve-3d;
+  transition: transform 400ms ease;
+}
+
+/* Class applied when card is clicked and answer is shown as card is rotated around its x-axis */
+.card.show-answer .inner-card {
+  transform: rotateX(180deg);
+}
+
+.inner-card-front,
+.inner-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+
+  /* This specifies whether the backface of an element is visible when its turned towards us */
+  backface-visibility: hidden;
+}
+
+.inner-card-front {
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+.inner-card-back {
+  transform: rotateX(180deg);
+}
+
+.inner-card-front {
+  background-color: rgba(84, 111, 155, 0.52);
+}
+
+.inner-card-front::after,
+.inner-card-back::after {
+  /* Allows for use of icon in content. Need these 2 lines. Unicode code retrieved from font awesome */
+  content: "\f021  Flip";
+  font-family: "Font Awesome 5 Free", "Ubuntu", sans-serif;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: rgb(29, 149, 197);
+}
+
+.navigation {
+  display: flex;
+  margin: 20px 0;
+}
+.navigation .nav-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+.navigation p {
+  margin: 0 25px;
+}
+
+.add-container {
+  opacity: 0;
+  background-color: #f0f0f0;
+  border-top: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+  transition: 300ms ease;
+}
+.add-container.show {
+  opacity: 1;
+  z-index: 2;
+}
+.add-container h3 {
+  margin: 10px 0;
+}
+.form-group label {
+  display: block;
+  margin: 20px 0 10px;
+}
+.form-group textarea {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 12px;
+  min-width: 500px;
+  max-width: 100%;
+}
